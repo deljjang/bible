@@ -46,13 +46,13 @@ fun SinyNavigation(
             )
         }
         composable(SinyDestinations.OLD_ROUTE) {
-            Log.d(tag, "SinyNavigation.NavHost.PLAYER_ROUTE")
+            Log.d(tag, "SinyNavigation.NavHost.OLD_ROUTE")
             HomeRoute(
                 text = NavigationItem.Old.title
             )
         }
         composable(SinyDestinations.NEW_ROUTE) {
-            Log.d(tag, "SinyNavigation.NavHost.MUSIC_ROUTE")
+            Log.d(tag, "SinyNavigation.NavHost.NEW_ROUTE")
             HomeRoute(
                 text = NavigationItem.New.title
             )

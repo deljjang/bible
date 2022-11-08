@@ -21,11 +21,13 @@ class MainActivity : ComponentActivity() {
         //DB처리 시작
         DBUtil.context = this
 
+        /*
         val list = DBUtil.getList("select * from tb_list ")
         Log.d(tag, "onCreate.list=${list.size} $list") //66건
 
         val list2 = DBUtil.getList("select * from tb_list2 ")
         Log.d(tag, "onCreate.list2=${list2.size} $list2")
+         */
 
 
         val dbCnt = DBUtil.getInt("select count(1) cnt from tb_list where db_set = 0")

@@ -20,6 +20,7 @@ object DBUtil {
     var context: Context? = null
         set(value) {
             if (field == null) {
+                log("DBAdapter.create")
                 mDBAdapter = DBAdapter(value, dbName, mDBAdapterOnCreate)
             }
             field = value
@@ -30,6 +31,7 @@ object DBUtil {
     private val mDBAdapterOnCreate: DBAdapterOnCreate =
     object : DBAdapterOnCreate {
         override fun onCreate(db: SQLiteDatabase?) {
+            log("DBAdapterOnCreate.onCreate")
             DBCreate.onCreate(db!!)
         }
 

@@ -3,11 +3,16 @@ package com.siny.bible.ui.app
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.siny.bible.R
+import com.siny.bible.ui.screen.main.MainViewModel
+import com.siny.bible.ui.screen.main.MainViewModelFactory
+import com.siny.data.repository.MainRepository
 
 object SinyDestinations {
     const val HOME_ROUTE = "home"
@@ -47,13 +52,27 @@ fun SinyNavigation(
         }
         composable(SinyDestinations.OLD_ROUTE) {
             Log.d(tag, "SinyNavigation.NavHost.OLD_ROUTE")
-            HomeRoute(
+            val viewModel: MainViewModel = viewModel(
+                factory = MainViewModelFactory(
+                    repository = MainRepository(),
+                    cd1 = "1",
+                )
+            )
+            MainRoute(
+                viewModel = viewModel,
                 text = NavigationItem.Old.title
             )
         }
         composable(SinyDestinations.NEW_ROUTE) {
             Log.d(tag, "SinyNavigation.NavHost.NEW_ROUTE")
-            HomeRoute(
+            val viewModel: MainViewModel = viewModel(
+                factory = MainViewModelFactory(
+                    repository = MainRepository(),
+                    cd1 = "2",
+                )
+            )
+            MainRoute(
+                viewModel = viewModel,
                 text = NavigationItem.New.title
             )
         }

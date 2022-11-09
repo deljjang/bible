@@ -17,7 +17,7 @@ class MainViewModel(
 
     private val tag = javaClass.simpleName
 
-    var mainList: MutableList<MainData> = repository.getList(cd1)
+    var mainList: List<MainData> = repository.getList(cd1)
 
     init {
         viewModelScope.launch {

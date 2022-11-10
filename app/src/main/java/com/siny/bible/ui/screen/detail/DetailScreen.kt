@@ -15,6 +15,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.siny.bible.ui.theme.BibleTheme
@@ -81,28 +82,30 @@ fun DetailTitle(
             //.fillMaxWidth()
             .align(Alignment.CenterEnd)
         ) {
-            Box {
-                Row(Modifier.clickable {
-                    cd3Count = getCd3Count(mainData)
-                    expanded1 = !expanded1
-                }) {
-                    Text(text = "${cd3}장")
-                    Icon(
-                        imageVector = Icons.Filled.ArrowDropDown,
-                        contentDescription = ""
-                    )
-                }
+            Row(Modifier.clickable {
+                cd3Count = getCd3Count(mainData)
+                expanded1 = !expanded1
+            }) {
+                Text(text = "${cd3}장")
+                Icon(
+                    imageVector = Icons.Filled.ArrowDropDown,
+                    contentDescription = ""
+                )
             }
-                Row(Modifier.defaultMinSize(minWidth = 50.dp).clickable {
-                    cd4Count = getCd4Count(mainData.cd1, mainData.cd2, cd3)
-                    expanded2 = !expanded2
-                }) {
-                    Text(text = "${cd4}절")
-                    Icon(
-                        imageVector = Icons.Filled.ArrowDropDown,
-                        contentDescription = ""
-                    )
-                }
+
+            Row(Modifier.defaultMinSize(minWidth = 50.dp).clickable {
+                cd4Count = getCd4Count(mainData.cd1, mainData.cd2, cd3)
+                expanded2 = !expanded2
+            }) {
+                Text(text = "${cd4}절",
+                    modifier = Modifier.defaultMinSize(minWidth = 50.dp),
+                    textAlign = TextAlign.End
+                )
+                Icon(
+                    imageVector = Icons.Filled.ArrowDropDown,
+                    contentDescription = ""
+                )
+            }
 
             DropdownMenu(
                 expanded = expanded1,
@@ -237,10 +240,10 @@ fun DetailTitlePreview() {
     val lazyListState = rememberLazyListState()
     BibleTheme {
         Surface {
-            DetailTitle(
+            DetailScreen(
                 mainData = mainData,
                 list = list,
-                lazyListState = lazyListState,
+                //lazyListState = lazyListState,
                 getCd3Count = {a -> 0},
                 getCd4Count = {a, b,c -> 0},
                 getPos = {1},

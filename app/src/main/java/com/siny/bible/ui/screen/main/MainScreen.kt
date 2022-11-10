@@ -7,9 +7,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -22,11 +22,11 @@ import androidx.compose.ui.unit.dp
 import com.siny.bible.ui.theme.BibleTheme
 import com.siny.data.model.MainData
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MainScreen(
     mainList: List<MainData>,
-    text: String
+    text: String,
+    onClick: (MainData) -> Unit = {}
 ){
     Column(
         modifier = Modifier.padding(5.dp),
@@ -39,18 +39,18 @@ fun MainScreen(
         )
 
         LazyVerticalGrid(
-            cells = GridCells.Adaptive(minSize = 128.dp)
+            columns = GridCells.Adaptive(minSize = 128.dp)
         ) {
             itemsIndexed(mainList) {index, main ->
                 Button(
                     onClick = {
-
+                        onClick(main)
                     },
                     modifier = Modifier.padding(5.dp),
                 ) {
                     Text(text = "${main.cd2}.${main.nm}")
                 }
-                Log.d("MainScreen","${main.cd2}.${main.nm}")
+                //Log.d("MainScreen","${main.cd2}.${main.nm}")
             }
         }
 

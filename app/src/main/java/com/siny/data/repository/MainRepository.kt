@@ -2,6 +2,7 @@ package com.siny.data.repository
 
 import android.database.Cursor
 import android.util.Log
+import com.siny.data.model.DetailData
 import com.siny.data.model.MainData
 import com.siny.db.DBUtil
 
@@ -12,6 +13,37 @@ class MainRepository {
     fun getList(cd1: String): List<MainData> {
         val sql = "select cd1, cd2, nm, nm2 from tb_list where cd1 = ? order by 1, 2"
         return getList(sql, cd1)
+    }
+
+    fun getDetailList(mainData: MainData): List<DetailData> {
+        val sql = "select cd1, cd2, cd3, cd4, txt from tb_list2 where cd1 = ? and cd2 = ? order by 1, 2, 3, 4"
+        return getDetailList(sql, mainData)
+    }
+
+    fun getDetailList(sql: String, mainData: MainData): MutableList<DetailData> {
+        val list: MutableList<DetailData> = ArrayList()
+        var c: Cursor? = null
+        try {
+            c = DBUtil.query(sql, mainData.cd1.toString(), mainData.cd2.toString())
+            if (c != null) {
+                while (c.moveToNext()) {
+                    val map = DetailData(
+                        cd1 = c.getInt(0),
+                        cd2 = c.getInt(1),
+                        cd3 = c.getInt(2),
+                        cd4 = c.getInt(3),
+                        txt = c.getString(4),
+                    )
+                    list.add(map)
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(tag, "Cursor.Exception.Cursor= $c")
+            Log.e(tag, "Cursor.Exception= $e")
+        } finally {
+            c?.close()
+        }
+        return list
     }
 
     fun getList(sql: String, cd1: String): MutableList<MainData> {

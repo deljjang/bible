@@ -2,8 +2,11 @@ package com.siny.bible.ui.app
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import com.siny.bible.ui.screen.detail.DetailScreen
 import com.siny.bible.ui.screen.main.MainScreen
 import com.siny.bible.ui.screen.main.MainViewModel
+import com.siny.data.model.DetailData
+import com.siny.data.model.MainData
 
 @Composable
 fun HomeRoute(text: String){
@@ -13,10 +16,22 @@ fun HomeRoute(text: String){
 @Composable
 fun MainRoute(
     viewModel: MainViewModel,
+    mainData: MainData,
+    detail: Boolean,
+    onClick: (MainData) -> Unit,
     text: String
 ){
-    MainScreen(
-        mainList = viewModel.mainList,
-        text = text
-    )
+    if(detail) {
+        viewModel.getDetailList(mainData)
+        DetailScreen(
+            mainData = mainData,
+            list = viewModel.detailList!!,
+        )
+    } else {
+        MainScreen(
+            mainList = viewModel.mainList,
+            onClick = onClick,
+            text = text,
+        )
+    }
 }

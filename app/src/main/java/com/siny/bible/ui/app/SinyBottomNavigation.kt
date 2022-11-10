@@ -25,6 +25,7 @@ fun SinyBottomNavigation(
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.background,
         contentColor = MaterialTheme.colorScheme.contentColorFor(MaterialTheme.colorScheme.background)
+
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route

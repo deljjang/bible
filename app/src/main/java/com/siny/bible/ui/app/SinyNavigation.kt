@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import com.siny.bible.R
 import com.siny.bible.ui.screen.main.MainViewModel
 import com.siny.bible.ui.screen.main.MainViewModelFactory
+import com.siny.data.model.MainData
 import com.siny.data.repository.MainRepository
 
 object SinyDestinations {
@@ -33,6 +34,9 @@ open class NavigationItem(var route: String, var drawable: Int = 0, var title: S
 fun SinyNavigation(
     modifier: Modifier = Modifier,
     navController: NavHostController,
+    mainData: MainData,
+    detail: Boolean,
+    onClick: (MainData) -> Unit,
     startDestination: String = SinyDestinations.HOME_ROUTE
 ) {
     val tag = "SinyNavigation"
@@ -43,6 +47,7 @@ fun SinyNavigation(
         modifier = modifier
     ) {
         Log.d(tag, "SinyNavigation.NavHost.startDestination=$startDestination")
+        Log.d(tag, "SinyNavigation.NavHost.mainData=$mainData")
 
         composable(SinyDestinations.HOME_ROUTE) {
             Log.d(tag, "SinyNavigation.NavHost.HOME_ROUTE")
@@ -60,6 +65,9 @@ fun SinyNavigation(
             )
             MainRoute(
                 viewModel = viewModel,
+                mainData = mainData,
+                detail = detail,
+                onClick = onClick,
                 text = NavigationItem.Old.title
             )
         }
@@ -73,6 +81,9 @@ fun SinyNavigation(
             )
             MainRoute(
                 viewModel = viewModel,
+                mainData = mainData,
+                detail = detail,
+                onClick = onClick,
                 text = NavigationItem.New.title
             )
         }

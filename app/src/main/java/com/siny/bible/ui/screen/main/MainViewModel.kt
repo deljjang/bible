@@ -19,6 +19,14 @@ class MainViewModel(
         detailList = repository.getDetailList(mainData);
     }
 
+    val cd3Count: (MainData) -> Int = {
+        repository.getCd3Count(it)
+    }
+
+    val cd4Count: (Int, Int, Int) -> Int = {cd1, cd2, cd3 ->
+        repository.getCd4Count(cd1, cd2, cd3)
+    }
+
 }
 
 class MainViewModelFactory(

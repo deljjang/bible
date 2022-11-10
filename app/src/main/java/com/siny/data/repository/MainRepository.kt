@@ -20,6 +20,16 @@ class MainRepository {
         return getDetailList(sql, mainData)
     }
 
+    fun getCd3Count(main: MainData): Int {
+        val sql = "select max(cd3) cd3 from tb_list2 where cd1 = ? and cd2 = ?"
+        return DBUtil.getInt(sql, main.cd1.toString(), main.cd2.toString())
+    }
+
+    fun getCd4Count(cd1: Int, cd2: Int, cd3: Int): Int {
+        val sql = "select max(cd4) cd3 from tb_list2 where cd1 = ? and cd2 = ? and cd3 = ?"
+        return DBUtil.getInt(sql, cd1.toString(), cd2.toString(), cd3.toString())
+    }
+
     fun getDetailList(sql: String, mainData: MainData): MutableList<DetailData> {
         val list: MutableList<DetailData> = ArrayList()
         var c: Cursor? = null

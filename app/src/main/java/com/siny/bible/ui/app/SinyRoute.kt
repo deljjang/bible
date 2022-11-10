@@ -25,6 +25,8 @@ fun MainRoute(
         DetailScreen(
             mainData = mainData,
             list = viewModel.detailList!!,
+            getCd3Count = viewModel.cd3Count,
+            getCd4Count = viewModel.cd4Count,
         )
     } else {
         MainScreen(

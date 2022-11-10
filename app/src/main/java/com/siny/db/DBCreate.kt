@@ -13,6 +13,7 @@ object DBCreate {
                     + ", cd2 integer " //명칭에 대한 코드 : 1:창세기, 2:출애굽기
                     + ", nm varchar(20)  " //명칭 1:창세기, 2:출애굽기
                     + ", nm2 varchar(4)  " //약칭 1:창, 2:출
+                    + ", pos integer default 1 "
                     + ", db_set integer default 0 "
                     + ")")
         db.execSQL(sql)
@@ -96,9 +97,11 @@ object DBCreate {
 
         sql = ("create table tb_list2 (cd1 integer " //신구약 구분 1:구약, 2:신약
                 + ", cd2 integer " //명칭에 대한 코드 : 1:창세기, 2:출애굽기
-                + ", cd3 integer  " //장
-                + ", cd4 integer  " //절
-                + ", txt text  " //내용
+                + ", cd3 integer " //장
+                + ", cd4 integer " //절
+                + ", txt text " //내용
+                + ", pos integer "
+                + ", favorite integer "
                 + " , PRIMARY KEY(cd1,cd2,cd3,cd4) "
                 + ")")
         db.execSQL(sql)

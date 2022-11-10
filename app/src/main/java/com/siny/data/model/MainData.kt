@@ -4,5 +4,6 @@ data class MainData(
     var cd1: Int = 0,
     var cd2: Int = 0,
     var nm: String = "",
-    var nm2: String = ""
+    var nm2: String = "",
+    var pos: Int = 1,
 )

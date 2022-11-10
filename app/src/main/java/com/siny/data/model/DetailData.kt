@@ -6,4 +6,6 @@ data class DetailData(
     var cd3: Int = 0,       //장
     var cd4: Int = 0,       //절
     var txt: String = "",   //내용
+    var pos: Int = 1,
+    var favorite: Int = 0,
 )

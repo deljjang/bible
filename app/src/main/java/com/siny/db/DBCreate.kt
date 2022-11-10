@@ -101,7 +101,7 @@ object DBCreate {
                 + ", cd4 integer " //절
                 + ", txt text " //내용
                 + ", pos integer "
-                + ", favorite integer "
+                + ", favorite integer default 0 "
                 + " , PRIMARY KEY(cd1,cd2,cd3,cd4) "
                 + ")")
         db.execSQL(sql)

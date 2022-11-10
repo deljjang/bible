@@ -97,6 +97,7 @@ object LoadText {
         try {
             db.beginTransaction()
 
+            var pos = 0
             val inputReader = InputStreamReader(inputStream)
             val bufferReader = BufferedReader(inputReader)
             while (bufferReader.readLine().also { line = it }  != null) {
@@ -106,6 +107,7 @@ object LoadText {
                 val p2 = line!!.split(" ").toTypedArray()[0]
                 line = line!!.substring(p2.length + 1)
                 //Log.d(tag, "$p1, $p2, $line")
+                pos++
 
                 val cv = ContentValues()
                 cv.put("cd1", cd1)
@@ -113,6 +115,7 @@ object LoadText {
                 cv.put("cd3", p1)
                 cv.put("cd4", p2)
                 cv.put("txt", line)
+                cv.put("pos", pos)
                 db.insert("tb_list2", null, cv)
             }
             DBUtil.execSQL("update tb_list set db_set=1 where cd1=? and cd2=?", cd1, cd2)

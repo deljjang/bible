@@ -27,6 +27,8 @@ fun MainRoute(
             list = viewModel.detailList!!,
             getCd3Count = viewModel.cd3Count,
             getCd4Count = viewModel.cd4Count,
+            getPos = viewModel.getPos,
+            setPos = viewModel.setPos
         )
     } else {
         MainScreen(

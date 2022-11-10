@@ -1,9 +1,7 @@
 package com.siny.bible.ui.screen.main
 
 import android.content.res.Configuration
-import android.util.Log
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -53,9 +51,7 @@ fun MainScreen(
                 //Log.d("MainScreen","${main.cd2}.${main.nm}")
             }
         }
-
     }
-
 }
 
 @ExperimentalAnimationApi

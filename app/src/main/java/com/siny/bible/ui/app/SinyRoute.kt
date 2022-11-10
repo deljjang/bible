@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import com.siny.bible.ui.screen.detail.DetailScreen
 import com.siny.bible.ui.screen.main.MainScreen
 import com.siny.bible.ui.screen.main.MainViewModel
-import com.siny.data.model.DetailData
 import com.siny.data.model.MainData
 
 @Composable
